@@ -1,5 +1,5 @@
 import express from 'express'
-import { createTour, deleteTour, getAllTour, getFeaturedTour, getSingleTour, getTourBySearch, getTourCount, updateTour } from '../Controllers/tourControllers.js'
+import { createTour, deleteTour, getAllTour, getAllTourAdmin, getFeaturedTour, getSingleTour, getTourBySearch, getTourCount, updateTour } from '../Controllers/tourControllers.js'
 
 import { verifyAdmin } from '../utils/verifyToken.js'
 
@@ -7,7 +7,7 @@ const router = express.Router()
 
 //Create new tour 
 // router.post('/', verifyAdmin, createTour)
-router.post('/', createTour)
+router.post('/', verifyAdmin, createTour)
 
 //Update tour 
 router.put('/:id', verifyAdmin, updateTour)
@@ -20,6 +20,7 @@ router.get('/:id', getSingleTour)
 
 //Get all tour 
 router.get('/', getAllTour)
+router.get('/admin/getAllTour', getAllTourAdmin)
 
 //Get tour by search
 router.get("/search/getTourBySearch", getTourBySearch)

@@ -70,7 +70,17 @@ export const getAllTour = async (req, res) => {
       res.status(404).json({ success: false, message: 'Not Found' })
    }
 }
+//Get All Tour
+export const getAllTourAdmin = async (req, res) => {
 
+
+   try {
+      const tours = await Tour.find({}).populate('reviews')
+      res.status(200).json({ success: true, count: tours.length, message: 'Successfully', data: tours })
+   } catch (error) {
+      res.status(404).json({ success: false, message: 'Not Found it',error: error})
+   }
+}
 
 // Get tour by search
 export const getTourBySearch = async (req, res) => {

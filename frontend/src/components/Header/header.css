@@ -13,8 +13,12 @@
    line-height: 80px;
 }
 
-.logo img {
+.logo h1 {
    width: 30%;
+}
+.logo-text{
+   color: #faa935;
+
 }
 
 .menu {

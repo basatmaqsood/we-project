@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken'
 
 export const verifyToken = (req, res, next) => {
-   console.log(req);
    const token = req.cookies.accessToken
 
    if (!token) {
@@ -34,8 +33,10 @@ export const verifyUser = (req, res, next) => {
 
 
 export const verifyAdmin = (req, res, next) => {
+   
    verifyToken(req, res, next, () => {
-      if (req.user.role === 'admin') {
+      console.log(req.user.role)
+      if (req.user.role == "admin") {
          next()
       } else {
          return res.status(401).json({ success: false, message: "You are not authorize" })
